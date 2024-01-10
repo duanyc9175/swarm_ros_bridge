@@ -75,11 +75,11 @@ send_topics:
   srcIP: robotc
   srcPort: 3029
 
-- topic_name: /c/distributedMapping/copyGlobalMap
-  msg_type: sensor_msgs/PointCloud2
-  max_freq: 10
-  srcIP: robotc
-  srcPort: 3030
+# - topic_name: /c/distributedMapping/copyGlobalMap
+#   msg_type: sensor_msgs/PointCloud2
+#   max_freq: 10
+#   srcIP: robotc
+#   srcPort: 3030
 
 
 ####### receive these ROS messages from remote robots #######
@@ -137,15 +137,7 @@ recv_topics:
   srcIP: robota
   srcPort: 3008
 
-- topic_name: /a/distributedMapping/globalMap
-  msg_type: sensor_msgs/PointCloud2
-  srcIP: robota
-  srcPort: 3009
 
-- topic_name: /a/distributedMapping/copyGlobalMap
-  msg_type: sensor_msgs/PointCloud2
-  srcIP: robota
-  srcPort: 3010
   
 #b接收测试通道
 - topic_name: /b/chatter_recv 
@@ -189,15 +181,7 @@ recv_topics:
   srcPort: 3018
 
 
-- topic_name: /b/distributedMapping/globalMap
-  msg_type: sensor_msgs/PointCloud2
-  srcIP: robotb
-  srcPort: 3019
 
-- topic_name: /b/distributedMapping/copyGlobalMap
-  msg_type: sensor_msgs/PointCloud2
-  srcIP: robotb
-  srcPort: 3020
 
 
 

@@ -12,7 +12,8 @@ IP:
   robotb: 192.168.10.105
   robotc: 192.168.10.103
   PC1: 192.168.10.102
-  PC2: 192.168.10.100
+  PC2: 192.168.10.102
+  airfly: 192.168.10.108
   test_local: 127.0.0.1 # just for local machine test
 
 ####### Send these ROS messages to remote robots #######i
@@ -24,30 +25,46 @@ send_topics:
   srcIP: self 
   srcPort: 3050 
 
-
-
 ####### receive these ROS messages from remote robots #######
 ## if no recv_topics needed, comment all these out
 recv_topics:
-
-#a车发的消息 
+#a车全局地图
 - topic_name: /a/distributedMapping/globalMap
   msg_type: sensor_msgs/PointCloud2
   srcIP: robota
   srcPort: 3009
-
-#b车发的消息  
-
+#b车全局地图
 - topic_name: /b/distributedMapping/globalMap
   msg_type: sensor_msgs/PointCloud2
   srcIP: robotb
   srcPort: 3019
-  
-
-#c车发来的消息
-
+#c车全局地图
 - topic_name: /c/distributedMapping/globalMap
   msg_type: sensor_msgs/PointCloud2
   srcIP: robotc
   srcPort: 3029
+#a车：稠密地图
+- topic_name: /a/distributedMapping/copyGlobalMap
+  msg_type: sensor_msgs/PointCloud2
+  srcIP: robota
+  srcPort: 3010
+#b车：稠密地图 
+- topic_name: /b/distributedMapping/copyGlobalMap
+  msg_type: sensor_msgs/PointCloud2
+  srcIP: robotb
+  srcPort: 3020
+#c车：稠密地图
+- topic_name: /c/distributedMapping/copyGlobalMap
+  msg_type: sensor_msgs/PointCloud2
+  srcIP: robotc
+  srcPort: 3030
 
+#无人机消息
+#带点云双目图像话题
+- topic_name: /camera/infra1/image_rect_raw/compressed
+  msg_type: sensor_msgs/CompressedImage
+  srcPort: 3051 
+
+- topic_name: /vins_fusion/point_cloud
+  msg_type: sensor_msgs/PointCloud
+  srcPort: 3052 

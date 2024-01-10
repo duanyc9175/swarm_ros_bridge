@@ -1,0 +1,43 @@
+### default supported ROS message types:
+# sensor_msgs/Imu IMU数据
+# geometry_msgs/Twist 几何信息
+# std_msgs/String 字符串
+# (modify/add in ros_sub_pub.hpp if you need more)如果需要更多，请修改/添加 ros_sub_pub.hpp
+### max number of send_topics supported: 50 支持的最大发送主题数：50
+
+### list all <IPname: IP> here (IPname can be set arbitrarily) ###
+IP:
+  self: '*'   # '*' stands for all self IPs
+  robota: 192.168.10.102
+  robotb: 192.168.10.106
+  robotc: 192.168.10.105
+  PC1: 192.168.10.107
+  PC2: 192.168.10.102
+  airfly: 192.168.10.108
+  test_local: 127.0.0.1 # just for local machine test
+
+####### Send these ROS messages to remote robots #######i
+## if no send_topics needed, comment all these out
+send_topics:
+- topic_name: /camera/infra1/image_rect_raw/compressed
+  msg_type: sensor_msgs/CompressedImage
+  max_freq: 30 
+  srcIP: airfly 
+  srcPort: 3051 
+
+- topic_name: /vins_fusion/point_cloud
+  msg_type: sensor_msgs/PointCloud
+  max_freq: 15
+  srcIP: airfly 
+  srcPort: 3052 
+
+
+####### receive these ROS messages from remote robots #######
+## if no recv_topics needed, comment all these out
+recv_topics:
+- topic_name: /PC2/chatter_recv 
+  msg_type: std_msgs/String 
+  srcIP: PC2 
+  srcPort: 3020 
+
+

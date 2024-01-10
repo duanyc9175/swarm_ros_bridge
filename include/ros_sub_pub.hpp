@@ -66,17 +66,27 @@
 #define MSG_CLASS9 nav_msgs::Path
 
 
+//新增sensor_msgs/CompressedImage类型的消息
+#include <sensor_msgs/CompressedImage.h>
+#define MSG_TYPE10 "sensor_msgs/CompressedImage"
+#define MSG_CLASS10 sensor_msgs::CompressedImage
 
+//新增sensor_msgs/image类型的消息
+#include <sensor_msgs/Image.h>
+#define MSG_TYPE11 "sensor_msgs/Image"
+#define MSG_CLASS11 sensor_msgs::Image
 
-
-
+//新增octomap_msgs/Octomap
+#include <sensor_msgs/PointCloud.h>
+#define MSG_TYPE12 "sensor_msgs/PointCloud"
+#define MSG_CLASS12 sensor_msgs::PointCloud
 
 
 // #include <xxx/yy.h>
 // #define MSG_TYPE4 "xxx/yy"
 // #define MSG_CLASS4 xxx::yy
 
-# define SUB_MAX 50 // max number of subscriber callbacks
+# define SUB_MAX 70 // max number of subscriber callbacks
 
 template <typename T, int i>
 void sub_cb(const T &msg);
@@ -109,7 +119,11 @@ void (*sub_callbacks[])(const T &)=
   sub_cb<T,30>, sub_cb<T,31>, sub_cb<T,32>, sub_cb<T,33>, sub_cb<T,34>,
   sub_cb<T,35>, sub_cb<T,36>, sub_cb<T,37>, sub_cb<T,38>, sub_cb<T,39>,
   sub_cb<T,40>, sub_cb<T,41>, sub_cb<T,42>, sub_cb<T,43>, sub_cb<T,44>,
-  sub_cb<T,45>, sub_cb<T,46>, sub_cb<T,47>, sub_cb<T,48>, sub_cb<T,49>
+  sub_cb<T,45>, sub_cb<T,46>, sub_cb<T,47>, sub_cb<T,48>, sub_cb<T,49>,
+  sub_cb<T,50>, sub_cb<T,51>, sub_cb<T,52>, sub_cb<T,53>, sub_cb<T,54>,
+  sub_cb<T,55>, sub_cb<T,56>, sub_cb<T,57>, sub_cb<T,58>, sub_cb<T,59>,
+  sub_cb<T,60>, sub_cb<T,61>, sub_cb<T,62>, sub_cb<T,63>, sub_cb<T,64>,
+  sub_cb<T,65>, sub_cb<T,66>, sub_cb<T,67>, sub_cb<T,68>, sub_cb<T,69>,
 };
 
 template <typename T>
@@ -159,6 +173,14 @@ ros::Subscriber topic_subscriber(std::string topic_name, std::string msg_type, r
   #ifdef MSG_TYPE10
     if (msg_type == MSG_TYPE10)
         return nh_sub<MSG_CLASS10>(topic_name, nh, i);
+  #endif
+  #ifdef MSG_TYPE11
+    if (msg_type == MSG_TYPE11)
+        return nh_sub<MSG_CLASS11>(topic_name, nh, i);
+  #endif
+  #ifdef MSG_TYPE12
+    if (msg_type == MSG_TYPE12)
+        return nh_sub<MSG_CLASS12>(topic_name, nh, i);
   #endif  
     ROS_FATAL("Invalid ROS msg_type \"%s\" in configuration!", msg_type.c_str());
     exit(1);
@@ -206,6 +228,14 @@ ros::Publisher topic_publisher(std::string topic_name, std::string msg_type, ros
     if (msg_type == MSG_TYPE10)
         return nh.advertise<MSG_CLASS10>(topic_name, 10);
   #endif
+  #ifdef MSG_TYPE11
+    if (msg_type == MSG_TYPE11)
+        return nh.advertise<MSG_CLASS11>(topic_name, 10);
+  #endif
+  #ifdef MSG_TYPE12
+    if (msg_type == MSG_TYPE12)
+        return nh.advertise<MSG_CLASS12>(topic_name, 10);
+  #endif
     ROS_FATAL("Invalid ROS msg_type \"%s\" in configuration!", msg_type.c_str());
     exit(1);
 }
@@ -251,6 +281,14 @@ void deserialize_publish(uint8_t* buffer_ptr, size_t msg_size, std::string msg_t
   #ifdef MSG_TYPE10
     if (msg_type == MSG_TYPE10)
         return deserialize_pub<MSG_CLASS10>(buffer_ptr, msg_size, i);
+  #endif
+  #ifdef MSG_TYPE11
+    if (msg_type == MSG_TYPE11)
+        return deserialize_pub<MSG_CLASS11>(buffer_ptr, msg_size, i);
+  #endif
+  #ifdef MSG_TYPE12
+    if (msg_type == MSG_TYPE12)
+        return deserialize_pub<MSG_CLASS12>(buffer_ptr, msg_size, i);
   #endif
     ROS_FATAL("Invalid ROS msg_type \"%s\" in configuration!", msg_type.c_str());
     exit(1);

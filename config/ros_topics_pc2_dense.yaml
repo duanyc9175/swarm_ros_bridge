@@ -1,0 +1,55 @@
+### default supported ROS message types:
+# sensor_msgs/Imu IMU数据
+# geometry_msgs/Twist 几何信息
+# std_msgs/String 字符串
+# (modify/add in ros_sub_pub.hpp if you need more)如果需要更多，请修改/添加 ros_sub_pub.hpp
+### max number of send_topics supported: 50 支持的最大发送主题数：50
+
+### list all <IPname: IP> here (IPname can be set arbitrarily) ###
+IP:
+  self: '*'   # '*' stands for all self IPs
+  robota: 192.168.10.101
+  robotb: 192.168.10.105
+  robotc: 192.168.10.103
+  PC1: 192.168.10.102
+  PC2: 192.168.10.100
+  test_local: 127.0.0.1 # just for local machine test
+
+####### Send these ROS messages to remote robots #######i
+## if no send_topics needed, comment all these out
+send_topics:
+- topic_name: /PC2/chatter 
+  msg_type: std_msgs/String 
+  max_freq: 1000 
+  srcIP: self 
+  srcPort: 3050 
+
+
+
+####### receive these ROS messages from remote robots #######
+## if no recv_topics needed, comment all these out
+recv_topics:
+#a车：发送global_descriptor 和 /a/distributedMapping/neighborPoseEstimates
+
+
+- topic_name: /a/distributedMapping/copyGlobalMap
+  msg_type: sensor_msgs/PointCloud2
+  srcIP: robota
+  srcPort: 3010
+
+
+#b车发的消息  /a/distributedMapping/loopInfo
+
+- topic_name: /b/distributedMapping/copyGlobalMap
+  msg_type: sensor_msgs/PointCloud2
+  srcIP: robotb
+  srcPort: 3020
+  
+
+#c车发来的消息
+
+- topic_name: /c/distributedMapping/copyGlobalMap
+  msg_type: sensor_msgs/PointCloud2
+  srcIP: robotc
+  srcPort: 3030
+

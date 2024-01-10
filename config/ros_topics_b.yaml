@@ -1,0 +1,196 @@
+### default supported ROS message types:
+# sensor_msgs/Imu IMU数据
+# geometry_msgs/Twist 几何信息
+# std_msgs/String 字符串
+# (modify/add in ros_sub_pub.hpp if you need more)如果需要更多，请修改/添加 ros_sub_pub.hpp
+### max number of send_topics supported: 50 支持的最大发送主题数：50
+
+### list all <IPname: IP> here (IPname can be set arbitrarily) ###
+IP:
+  self: '*'   # '*' stands for all self IPs
+  robota: 192.168.10.101
+  robotb: 192.168.10.105
+  robotc: 192.168.10.103
+  PC1: 192.168.10.102
+  PC2: 192.168.10.100
+  test_local: 127.0.0.1 # just for local machine test
+
+####### Send these ROS messages to remote robots #######i
+## if no send_topics needed, comment all these out
+send_topics:
+#链接成功测试通道
+- topic_name: /b/chatter 
+  msg_type: std_msgs/String 
+  max_freq: 1000 
+  srcIP: robotb 
+  srcPort: 3011
+#b车
+- topic_name: /b/distributedMapping/globalDescriptors
+  msg_type: swarm_ros_bridge/global_descriptor
+  max_freq: 50
+  srcIP: robotb
+  srcPort: 3012
+
+- topic_name: /b/distributedMapping/neighborPoseEstimates
+  msg_type: swarm_ros_bridge/neighbor_estimate
+  max_freq: 10
+  srcIP: robotb
+  srcPort: 3013
+
+- topic_name: /b/distributedMapping/loopInfo
+  msg_type: swarm_ros_bridge/loop_info
+  max_freq: 50
+  srcIP: robotb
+  srcPort: 3014
+
+- topic_name: /b/distributedMapping/optimizationState
+  msg_type: std_msgs/Int8
+  max_freq: 50
+  srcIP: robotb
+  srcPort: 3015
+
+- topic_name: /b/distributedMapping/rotationEstimateState
+  msg_type: std_msgs/Int8
+  max_freq: 50
+  srcIP: robotb
+  srcPort: 3016
+
+- topic_name: /b/distributedMapping/poseEstimateState
+  msg_type: std_msgs/Int8
+  max_freq: 50
+  srcIP: robotb
+  srcPort: 3017
+
+- topic_name: /b/distributedMapping/neighborRotationEstimates
+  msg_type: swarm_ros_bridge/neighbor_estimate
+  max_freq: 50
+  srcIP: robotb
+  srcPort: 3018
+
+- topic_name: /b/distributedMapping/globalMap
+  msg_type: sensor_msgs/PointCloud2
+  max_freq: 10
+  srcIP: robotb
+  srcPort: 3019
+
+- topic_name: /b/distributedMapping/copyGlobalMap
+  msg_type: sensor_msgs/PointCloud2
+  max_freq: 10
+  srcIP: robotb
+  srcPort: 3020
+
+####### receive these ROS messages from remote robots #######
+## if no recv_topics needed, comment all these out
+recv_topics:
+#pc2
+- topic_name: /PC2/chatter_recv 
+  msg_type: std_msgs/String 
+  srcIP: PC2 
+  srcPort: 3050 
+#pc1
+- topic_name: /PC1/chatter 
+  msg_type: std_msgs/String 
+  srcIP: PC1 
+  srcPort: 3049 
+#a接收测试通道
+- topic_name: /a/chatter_recv 
+  msg_type: std_msgs/String 
+  srcIP: robota 
+  srcPort: 3001
+#a车发来的消息
+- topic_name: /a/distributedMapping/globalDescriptors
+  msg_type: swarm_ros_bridge/global_descriptor
+  srcIP: robota
+  srcPort: 3002
+
+- topic_name: /a/distributedMapping/neighborPoseEstimates
+  msg_type: swarm_ros_bridge/neighbor_estimate
+  srcIP: robota
+  srcPort: 3003
+
+- topic_name: /a/distributedMapping/loopInfo
+  msg_type: swarm_ros_bridge/loop_info
+  srcIP: robota
+  srcPort: 3004
+
+- topic_name: /a/distributedMapping/optimizationState
+  msg_type: std_msgs/Int8
+  srcIP: robota
+  srcPort: 3005
+
+- topic_name: /a/distributedMapping/rotationEstimateState
+  msg_type: std_msgs/Int8
+  srcIP: robota
+  srcPort: 3006
+
+- topic_name: /a/distributedMapping/poseEstimateState
+  msg_type: std_msgs/Int8
+  srcIP: robota
+  srcPort: 3007
+
+- topic_name: /a/distributedMapping/neighborRotationEstimates
+  msg_type: swarm_ros_bridge/neighbor_estimate
+  srcIP: robota
+  srcPort: 3008
+
+- topic_name: /a/distributedMapping/globalMap
+  msg_type: sensor_msgs/PointCloud2
+  srcIP: robota
+  srcPort: 3009
+
+- topic_name: /a/distributedMapping/copyGlobalMap
+  msg_type: sensor_msgs/PointCloud2
+  srcIP: robota
+  srcPort: 3010
+
+#c接收测试通道
+- topic_name: /c/chatter_recv 
+  msg_type: std_msgs/String 
+  srcIP: robotc 
+  srcPort: 3021
+#c车发来的消息
+- topic_name: /c/distributedMapping/globalDescriptors
+  msg_type: swarm_ros_bridge/global_descriptor
+  srcIP: robotc
+  srcPort: 3022
+
+- topic_name: /c/distributedMapping/neighborPoseEstimates
+  msg_type: swarm_ros_bridge/neighbor_estimate
+  srcIP: robotc
+  srcPort: 3023
+
+- topic_name: /c/distributedMapping/loopInfo
+  msg_type: swarm_ros_bridge/loop_info
+  srcIP: robotc
+  srcPort: 3024
+
+- topic_name: /c/distributedMapping/optimizationState
+  msg_type: std_msgs/Int8
+  srcIP: robotc
+  srcPort: 3025
+
+- topic_name: /c/distributedMapping/rotationEstimateState
+  msg_type: std_msgs/Int8
+  srcIP: robotc
+  srcPort: 3026
+
+- topic_name: /c/distributedMapping/poseEstimateState
+  msg_type: std_msgs/Int8
+  srcIP: robotc
+  srcPort: 3027
+
+- topic_name: /c/distributedMapping/neighborRotationEstimates
+  msg_type: swarm_ros_bridge/neighbor_estimate
+  srcIP: robotc
+  srcPort: 3028
+
+
+- topic_name: /c/distributedMapping/globalMap
+  msg_type: sensor_msgs/PointCloud2
+  srcIP: robotc
+  srcPort: 3029
+
+- topic_name: /c/distributedMapping/copyGlobalMap
+  msg_type: sensor_msgs/PointCloud2
+  srcIP: robotc
+  srcPort: 3030

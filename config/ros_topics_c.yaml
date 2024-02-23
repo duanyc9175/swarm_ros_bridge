@@ -8,22 +8,17 @@
 ### list all <IPname: IP> here (IPname can be set arbitrarily) ###
 IP:
   self: '*'   # '*' stands for all self IPs
-  robota: 192.168.10.101
+  robota: 192.168.10.104
   robotb: 192.168.10.105
   robotc: 192.168.10.103
-  PC1: 192.168.10.102
-  PC2: 192.168.10.100
-  test_local: 127.0.0.1 # just for local machine test
+  PC2: 192.168.10.101
 
 ####### Send these ROS messages to remote robots #######i
 ## if no send_topics needed, comment all these out
-
-
 send_topics:
-#c链接成功测试通道
-- topic_name: /c/chatter 
-  msg_type: std_msgs/String 
-  max_freq: 1000 
+- topic_name: /usb_cam/image_raw/compressed
+  msg_type: sensor_msgs/CompressedImage 
+  max_freq: 20
   srcIP: robotc 
   srcPort: 3021 
 #c车
@@ -85,22 +80,8 @@ send_topics:
 ####### receive these ROS messages from remote robots #######
 ## if no recv_topics needed, comment all these out
 recv_topics:
-#pc2
-- topic_name: /PC2/chatter_recv 
-  msg_type: std_msgs/String 
-  srcIP: PC2 
-  srcPort: 3050 
-  
-#pc1
-- topic_name: /PC1/chatter 
-  msg_type: std_msgs/String 
-  srcIP: PC1 
-  srcPort: 3049 
 #a接收测试通道
-- topic_name: /a/chatter_recv 
-  msg_type: std_msgs/String 
-  srcIP: robota 
-  srcPort: 3001
+
 #a车发来的消息
 - topic_name: /a/distributedMapping/globalDescriptors
   msg_type: swarm_ros_bridge/global_descriptor
@@ -140,10 +121,7 @@ recv_topics:
 
   
 #b接收测试通道
-- topic_name: /b/chatter_recv 
-  msg_type: std_msgs/String 
-  srcIP: robotb 
-  srcPort: 3011 
+
 #b车发来的消息
 - topic_name: /b/distributedMapping/globalDescriptors
   msg_type: swarm_ros_bridge/global_descriptor

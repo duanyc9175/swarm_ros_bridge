@@ -57,9 +57,16 @@ target_link_libraries(bridge_node
    zmq
    zmqpp
 )
-add_executable(start_node src/start.cpp)
-add_dependencies(start_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_executable(start_car src/start_car.cpp)
+add_dependencies(start_car ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-target_link_libraries(start_node
+target_link_libraries(start_car
+   ${catkin_LIBRARIES}
+)
+
+add_executable(start_pc src/start_pc.cpp)
+add_dependencies(start_pc ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+target_link_libraries(start_pc
    ${catkin_LIBRARIES}
 )

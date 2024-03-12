@@ -8,36 +8,38 @@
 ### list all <IPname: IP> here (IPname can be set arbitrarily) ###
 IP:
   self: '*'   # '*' stands for all self IPs
-  robota: 192.168.10.102
-  robotb: 192.168.10.106
-  robotc: 192.168.10.105
-  PC1: 192.168.10.107
   PC2: 192.168.10.102
   airfly: 192.168.10.108
-  test_local: 127.0.0.1 # just for local machine test
 
 ####### Send these ROS messages to remote robots #######i
 ## if no send_topics needed, comment all these out
 send_topics:
-- topic_name: /camera/infra1/image_rect_raw/compressed
-  msg_type: sensor_msgs/CompressedImage
-  max_freq: 30 
+# 无人机消息
+# 栅格地图
+- topic_name: /OccupancyGrid（待定）
+  msg_type: nav_msgs/OccupancyGrid
+  srcIP: airfly
+  max_freq: 10 
+  srcPort: 3040
+# 带点云双目图像话题
+- topic_name: /vins_fusion/image_track
+  msg_type: sensor_msgs/Image
+  max_freq: 50 
   srcIP: airfly 
-  srcPort: 3051 
-
-- topic_name: /vins_fusion/point_cloud
+  srcPort: 3041 
+# 历史视觉点云话题(地图)
+- topic_name: /vins_fusion/margin_cloud
   msg_type: sensor_msgs/PointCloud
-  max_freq: 15
+  max_freq: 50
   srcIP: airfly 
-  srcPort: 3052 
+  srcPort: 3042 
 
-
-####### receive these ROS messages from remote robots #######
-## if no recv_topics needed, comment all these out
-recv_topics:
-- topic_name: /PC2/chatter_recv 
-  msg_type: std_msgs/String 
-  srcIP: PC2 
-  srcPort: 3020 
+## 笔记本传来的消息
+## 1.启动指令//
+# recv_topics:
+# - topic_name: /PC2/chatter_recv 
+#   msg_type: std_msgs/String 
+#   srcIP: PC2 
+#   srcPort: 3020 
 
 

@@ -18,6 +18,13 @@ add_message_files(
   global_descriptor.msg
   loop_info.msg
   neighbor_estimate.msg
+  ScoutStatus.msg
+  ScoutMotorState.msg
+  ScoutLightState.msg
+  ScoutLightCmd.msg
+  ScoutBmsStatus.msg
+  ScoutDriverState.msg
+  start.msg
 )
 # 生成消息时依赖于 std_msgs
 generate_messages(
@@ -49,4 +56,17 @@ target_link_libraries(bridge_node
    ${catkin_LIBRARIES}
    zmq
    zmqpp
+)
+add_executable(start_car src/start_car.cpp)
+add_dependencies(start_car ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+target_link_libraries(start_car
+   ${catkin_LIBRARIES}
+)
+
+add_executable(start_pc src/start_pc.cpp)
+add_dependencies(start_pc ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+target_link_libraries(start_pc
+   ${catkin_LIBRARIES}
 )

@@ -42,6 +42,8 @@ int main(int argc, char **argv)
         msg.index_b = order_b;
         msg.index_c = order_c;
         start_order_pc.publish(msg);
+
+        
     }
     ros::spin();
 }

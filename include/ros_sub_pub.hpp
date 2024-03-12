@@ -23,42 +23,41 @@
 #define __ROS_SUB_PUB__
 #include <ros/ros.h>
 
-#include <sensor_msgs/Imu.h>
-#define MSG_TYPE1 "sensor_msgs/Imu"
-#define MSG_CLASS1 sensor_msgs::Imu
+#include <nav_msgs/OccupancyGrid.h>
+#define MSG_TYPE1 "nav_msgs/OccupancyGrid"
+#define MSG_CLASS1 nav_msgs::OccupancyGrid
 
-#include <geometry_msgs/Twist.h>
-#define MSG_TYPE2 "geometry_msgs/Twist"
-#define MSG_CLASS2 geometry_msgs::Twist
+// #include <geometry_msgs/Twist.h>
+// #define MSG_TYPE2 "geometry_msgs/Twist"
+// #define MSG_CLASS2 geometry_msgs::Twist
 
-#include <std_msgs/String.h>
-#define MSG_TYPE3 "std_msgs/String"
-#define MSG_CLASS3 std_msgs::String
+#include <swarm_ros_bridge/start.h>
+#define MSG_TYPE3 "swarm_ros_bridge/start"
+#define MSG_CLASS3 swarm_ros_bridge::start
 
-// 增加雷达点云信息
 #include <sensor_msgs/PointCloud2.h>
 #define MSG_TYPE4 "sensor_msgs/PointCloud2"
 #define MSG_CLASS4 sensor_msgs::PointCloud2
 
-//增加自定义的global_descriptor.msg
-#include <swarm_ros_bridge/global_descriptor.h>
-#define MSG_TYPE5 "swarm_ros_bridge/global_descriptor"
-#define MSG_CLASS5 swarm_ros_bridge::global_descriptor
+// //增加自定义的global_descriptor.msg
+// #include <swarm_ros_bridge/global_descriptor.h>
+// #define MSG_TYPE5 "swarm_ros_bridge/global_descriptor"
+// #define MSG_CLASS5 swarm_ros_bridge::global_descriptor
  
-//增加自定义的loop_info.msg
-#include <swarm_ros_bridge/loop_info.h>
-#define MSG_TYPE6 "swarm_ros_bridge/loop_info"
-#define MSG_CLASS6 swarm_ros_bridge::loop_info
+// //增加自定义的loop_info.msg
+// #include <swarm_ros_bridge/loop_info.h>
+// #define MSG_TYPE6 "swarm_ros_bridge/loop_info"
+// #define MSG_CLASS6 swarm_ros_bridge::loop_info
 
-// 增加自定义的neighbor_estimate.msg
-#include <swarm_ros_bridge/neighbor_estimate.h>
-#define MSG_TYPE7 "swarm_ros_bridge/neighbor_estimate"
-#define MSG_CLASS7 swarm_ros_bridge::neighbor_estimate
+// // 增加自定义的neighbor_estimate.msg
+// #include <swarm_ros_bridge/neighbor_estimate.h>
+// #define MSG_TYPE7 "swarm_ros_bridge/neighbor_estimate"
+// #define MSG_CLASS7 swarm_ros_bridge::neighbor_estimate
 
-//新增int8类型的消息
-#include <std_msgs/Int8.h>
-#define MSG_TYPE8 "std_msgs/Int8"
-#define MSG_CLASS8 std_msgs::Int8
+// //新增int8类型的消息
+// #include <std_msgs/Int8.h>
+// #define MSG_TYPE8 "std_msgs/Int8"
+// #define MSG_CLASS8 std_msgs::Int8
 
 //新增nav_msgs/Path类型的消息
 #include <nav_msgs/Path.h>
@@ -66,25 +65,21 @@
 #define MSG_CLASS9 nav_msgs::Path
 
 
-//新增sensor_msgs/CompressedImage类型的消息
+//新增CompressedImage类型的消息
 #include <sensor_msgs/CompressedImage.h>
 #define MSG_TYPE10 "sensor_msgs/CompressedImage"
 #define MSG_CLASS10 sensor_msgs::CompressedImage
 
-//新增sensor_msgs/image类型的消息
+//新增image类型的消息
 #include <sensor_msgs/Image.h>
 #define MSG_TYPE11 "sensor_msgs/Image"
 #define MSG_CLASS11 sensor_msgs::Image
 
-//新增octomap_msgs/Octomap
+//新增sensor_msgs/PointCloud类型的消息
 #include <sensor_msgs/PointCloud.h>
 #define MSG_TYPE12 "sensor_msgs/PointCloud"
 #define MSG_CLASS12 sensor_msgs::PointCloud
 
-
-// #include <xxx/yy.h>
-// #define MSG_TYPE4 "xxx/yy"
-// #define MSG_CLASS4 xxx::yy
 
 # define SUB_MAX 70 // max number of subscriber callbacks
 

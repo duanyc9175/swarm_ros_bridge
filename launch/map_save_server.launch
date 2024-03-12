@@ -1,0 +1,13 @@
+<launch>
+    <!--保存地图 -->
+    <arg name="filename" value="$(find swarm_ros_bridge)/map/nav" />
+    <node name="map_save" pkg="map_server" type="map_saver" args="-f $(arg filename)" />
+    
+    <!-- 运行已经保存的地图并发布-->
+    <arg name="map" default="nav.yaml" />
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find swarm_ros_bridge)/map/$(arg map)"/>
+
+
+</launch>
+
+

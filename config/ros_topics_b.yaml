@@ -33,11 +33,16 @@ send_topics:
 ## 1.启动指令///
 ## 2.规划好的路径//##发b小车需要走的规划路径给b小车
 recv_topics:
-- topic_name: /c/distributedMapping/neighborRotationEstimates
-  msg_type: swarm_ros_bridge/neighbor_estimate
-  srcIP: robotc
+## 1.启动指令
+- topic_name: /start_order
+  msg_type: swarm_ros_bridge/start
+  srcIP: robotb
   srcPort: 3028
-
+## 2.规划好的路径//##发a小车需要走的规划路径给a小车
+- topic_name: /a/path(待定)
+  msg_type: nav_msgs/Path
+  srcIP: robotb
+  srcPort: 3028
 
 
 

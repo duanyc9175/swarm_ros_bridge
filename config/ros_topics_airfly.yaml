@@ -15,10 +15,11 @@ IP:
 ## if no send_topics needed, comment all these out
 send_topics:
 # 无人机消息
-# 八叉树点云话题
-- topic_name: /octomap_full
-  msg_type: octomap_msgs/Octomap
+# 栅格地图
+- topic_name: /OccupancyGrid（待定）
+  msg_type: nav_msgs/OccupancyGrid
   srcIP: airfly
+  max_freq: 10 
   srcPort: 3040
 # 带点云双目图像话题
 - topic_name: /vins_fusion/image_track
@@ -35,7 +36,7 @@ send_topics:
 
 ## 笔记本传来的消息
 ## 1.启动指令//
-recv_topics:
+# recv_topics:
 # - topic_name: /PC2/chatter_recv 
 #   msg_type: std_msgs/String 
 #   srcIP: PC2 

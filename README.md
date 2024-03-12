@@ -65,8 +65,7 @@ csdn blog (in chinese): https://blog.csdn.net/benchuspx/article/details/12857672
 ## clone this package
 mkdir -p swarm_ros_bridge_ws/src  # or your own ros workspace
 cd swarm_ros_bridge_ws/src
-git clone https://gitee.com/shu-peixuan/swarm_ros_bridge.git
-# or 'git clone https://github.com/shupx/swarm_ros_bridge.git'
+git clone https://gitee.com/black-paradise/swarm_ros_bridge.git
 
 ## install dependencies
 sudo apt install libzmqpp-dev

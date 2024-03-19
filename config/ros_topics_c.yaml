@@ -12,6 +12,7 @@ IP:
   robotb: 192.168.10.105
   robotc: 192.168.10.103
   PC2: 192.168.10.101
+  PCstatic: 192.168.10.102
 
 ####### Send these ROS messages to remote robots #######i
 ## if no send_topics needed, comment all these out

@@ -18,16 +18,22 @@ IP:
 send_topics:
 # 小车当前位姿
 - topic_name: /b/ndt_pose
-  msg_type: geometry_msg/PoseStamped
+  msg_type: geometry_msgs/PoseStamped
   max_freq: 10
   srcIP: robotb
-  srcPort: 3060
+  srcPort: 3031
 # 车辆状态：电量、速度、故障状态
-- topic_name: /b/scout_status
-  msg_type: scout_msgs/ScoutStatus
+- topic_name: /scout_status_b
+  msg_type: swarm_ros_bridge/ScoutStatus
   max_freq: 10
   srcIP: robotb
-  srcPort: 3061
+  srcPort: 3022
+
+- topic_name: /BMS_status_b
+  msg_type: swarm_ros_bridge/ScoutBmsStatus
+  max_freq: 10
+  srcIP: robotb
+  srcPort: 3023
 
 ## 笔记本传来的消息
 ## 1.启动指令///
@@ -36,13 +42,13 @@ recv_topics:
 ## 1.启动指令
 - topic_name: /start_order
   msg_type: swarm_ros_bridge/start
-  srcIP: robotb
-  srcPort: 3028
+  srcIP: PC2
+  srcPort: 3001
 ## 2.规划好的路径//##发a小车需要走的规划路径给a小车
-- topic_name: /a/path(待定)
-  msg_type: nav_msgs/Path
-  srcIP: robotb
-  srcPort: 3028
+- topic_name: /astra_path_b
+  msg_type: std_msgs/Float64
+  srcIP: PC2
+  srcPort: 3003
 
 
 

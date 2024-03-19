@@ -20,19 +20,19 @@ send_topics:
   msg_type: nav_msgs/OccupancyGrid
   srcIP: airfly
   max_freq: 10 
-  srcPort: 3040
+  srcPort: 3011
 # 带点云双目图像话题
 - topic_name: /vins_fusion/image_track
   msg_type: sensor_msgs/Image
   max_freq: 50 
   srcIP: airfly 
-  srcPort: 3041 
+  srcPort: 3012 
 # 历史视觉点云话题(地图)
 - topic_name: /vins_fusion/margin_cloud
   msg_type: sensor_msgs/PointCloud
   max_freq: 50
   srcIP: airfly 
-  srcPort: 3042 
+  srcPort: 3013 
 
 ## 笔记本传来的消息
 ## 1.启动指令//

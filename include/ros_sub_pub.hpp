@@ -27,9 +27,9 @@
 #define MSG_TYPE1 "nav_msgs/OccupancyGrid"
 #define MSG_CLASS1 nav_msgs::OccupancyGrid
 
-// #include <geometry_msgs/Twist.h>
-// #define MSG_TYPE2 "geometry_msgs/Twist"
-// #define MSG_CLASS2 geometry_msgs::Twist
+#include <geometry_msgs/PoseStamped.h>
+#define MSG_TYPE2 "geometry_msgs/PoseStamped"
+#define MSG_CLASS2 geometry_msgs::PoseStamped
 
 #include <swarm_ros_bridge/start.h>
 #define MSG_TYPE3 "swarm_ros_bridge/start"
@@ -39,30 +39,29 @@
 #define MSG_TYPE4 "sensor_msgs/PointCloud2"
 #define MSG_CLASS4 sensor_msgs::PointCloud2
 
-// //增加自定义的global_descriptor.msg
-// #include <swarm_ros_bridge/global_descriptor.h>
-// #define MSG_TYPE5 "swarm_ros_bridge/global_descriptor"
-// #define MSG_CLASS5 swarm_ros_bridge::global_descriptor
+//增加自定义:车辆状态：电量、速度、故障状态
+#include <swarm_ros_bridge/ScoutStatus.h>
+#define MSG_TYPE5 "swarm_ros_bridge/ScoutStatus"
+#define MSG_CLASS5 swarm_ros_bridge::ScoutStatus
  
-// //增加自定义的loop_info.msg
-// #include <swarm_ros_bridge/loop_info.h>
-// #define MSG_TYPE6 "swarm_ros_bridge/loop_info"
-// #define MSG_CLASS6 swarm_ros_bridge::loop_info
+#include <swarm_ros_bridge/ScoutBmsStatus.h>
+#define MSG_TYPE6 "swarm_ros_bridge/ScoutBmsStatus"
+#define MSG_CLASS6 swarm_ros_bridge::ScoutBmsStatus
 
 // // 增加自定义的neighbor_estimate.msg
 // #include <swarm_ros_bridge/neighbor_estimate.h>
 // #define MSG_TYPE7 "swarm_ros_bridge/neighbor_estimate"
 // #define MSG_CLASS7 swarm_ros_bridge::neighbor_estimate
 
-// //新增int8类型的消息
-// #include <std_msgs/Int8.h>
-// #define MSG_TYPE8 "std_msgs/Int8"
-// #define MSG_CLASS8 std_msgs::Int8
+//新增int8类型的消息
+#include <std_msgs/Float64.h>
+#define MSG_TYPE8 "std_msgs/Float64"
+#define MSG_CLASS8 std_msgs::Float64
 
-//新增nav_msgs/Path类型的消息
-#include <nav_msgs/Path.h>
-#define MSG_TYPE9 "nav_msgs/Path"
-#define MSG_CLASS9 nav_msgs::Path
+// //新增nav_msgs/Path类型的消息
+// #include <nav_msgs/Path.h>
+// #define MSG_TYPE9 "nav_msgs/Path"
+// #define MSG_CLASS9 nav_msgs::Path
 
 
 //新增CompressedImage类型的消息

@@ -52,36 +52,36 @@ send_topics:
 recv_topics:
 #a车发的消息  /a/distributedMapping/loopInfo
 - topic_name: /a/ndt_pose
-  msg_type: geometry_msg/PoseStamped
+  msg_type: geometry_msgs/PoseStamped
   srcIP: robotc
   srcPort: 3050
 
 - topic_name: /a/scout_status
-  msg_type: scout_msgs/ScoutStatus
+  msg_type: swarm_ros_bridge/ScoutStatus
   srcIP: robota
   srcPort: 3051
 
 
 #b车发的消息  /a/distributedMapping/loopInfo
 - topic_name: /b/ndt_pose
-  msg_type: geometry_msg/PoseStamped
+  msg_type: geometry_msgs/PoseStamped
   srcIP: robotb
   srcPort: 3060
 
 - topic_name: /b/scout_status
-  msg_type: scout_msgs/ScoutStatus
+  msg_type: swarm_ros_bridge/ScoutStatus
   srcIP: robotb
   srcPort: 3061
   
 
 #c车发来的消息
 - topic_name: /c/ndt_pose
-  msg_type: geometry_msg/PoseStamped
+  msg_type: geometry_msgs/PoseStamped
   srcIP: robotc
   srcPort: 3070
 
 - topic_name: /b/scout_status
-  msg_type: scout_msgs/ScoutStatus
+  msg_type: swarm_ros_bridge/ScoutStatus
   srcIP: robotb
   srcPort: 3071
 

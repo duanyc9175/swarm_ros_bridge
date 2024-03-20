@@ -50,5 +50,15 @@ recv_topics:
   srcIP: PC2
   srcPort: 3003
 
+## 接收传输的png的图片和yaml文件
 
+- topic_name: /pgm_image
+  msg_type: sensor_msgs/Image
+  srcIP: PC2
+  srcPort: 3005
+
+- topic_name: /map_yaml
+  msg_type: swarm_ros_bridge/yamlMsg
+  srcIP: PC2
+  srcPort: 3006
 

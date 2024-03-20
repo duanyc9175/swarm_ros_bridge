@@ -25,6 +25,7 @@ add_message_files(
   ScoutBmsStatus.msg
   ScoutDriverState.msg
   start.msg
+  yamlMsg.msg
 )
 # 生成消息时依赖于 std_msgs
 generate_messages(

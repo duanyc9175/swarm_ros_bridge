@@ -30,7 +30,7 @@
 #include <geometry_msgs/PoseStamped.h>
 #define MSG_TYPE2 "geometry_msgs/PoseStamped"
 #define MSG_CLASS2 geometry_msgs::PoseStamped
-
+// 启动指令
 #include <swarm_ros_bridge/start.h>
 #define MSG_TYPE3 "swarm_ros_bridge/start"
 #define MSG_CLASS3 swarm_ros_bridge::start
@@ -48,12 +48,12 @@
 #define MSG_TYPE6 "swarm_ros_bridge/ScoutBmsStatus"
 #define MSG_CLASS6 swarm_ros_bridge::ScoutBmsStatus
 
-// // 增加自定义的neighbor_estimate.msg
-// #include <swarm_ros_bridge/neighbor_estimate.h>
-// #define MSG_TYPE7 "swarm_ros_bridge/neighbor_estimate"
-// #define MSG_CLASS7 swarm_ros_bridge::neighbor_estimate
+// 增加自定义的ymal文件
+#include <swarm_ros_bridge/yamlMsg.h>
+#define MSG_TYPE7 "swarm_ros_bridge/yamlMsg"
+#define MSG_CLASS7 swarm_ros_bridge::yamlMsg
 
-//新增int8类型的消息
+//发送给小车的运行轨迹
 #include <std_msgs/Float64MultiArray.h>
 #define MSG_TYPE8 "std_msgs/Float64MultiArray"
 #define MSG_CLASS8 std_msgs::Float64MultiArray

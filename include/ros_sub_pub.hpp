@@ -54,9 +54,9 @@
 // #define MSG_CLASS7 swarm_ros_bridge::neighbor_estimate
 
 //新增int8类型的消息
-#include <std_msgs/Float64.h>
-#define MSG_TYPE8 "std_msgs/Float64"
-#define MSG_CLASS8 std_msgs::Float64
+#include <std_msgs/Float64MultiArray.h>
+#define MSG_TYPE8 "std_msgs/Float64MultiArray"
+#define MSG_CLASS8 std_msgs::Float64MultiArray
 
 // //新增nav_msgs/Path类型的消息
 // #include <nav_msgs/Path.h>

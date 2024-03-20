@@ -18,7 +18,7 @@ IP:
 ## if no send_topics needed, comment all these out
 send_topics:
 # 小车当前位姿
-- topic_name: /c/ndt_pose
+- topic_name: /ndt_pose
   msg_type: geometry_msgs/PoseStamped
   max_freq: 10
   srcIP: robotc
@@ -47,7 +47,7 @@ recv_topics:
 #   srcPort: 3001
 # ## 2.规划好的路径//##发a小车需要走的规划路径给a小车
 # - topic_name: /astra_path_c
-#   msg_type: std_msgs/Float64
+#   msg_type: std_msgs/Float64MultiArray
 #   srcIP: PC2
 #   srcPort: 3004
 
@@ -58,6 +58,6 @@ recv_topics:
   srcPort: 3001
 ## 2.规划好的路径//##发a小车需要走的规划路径给a小车
 - topic_name: /astra_path_c
-  msg_type: std_msgs/Float64
+  msg_type: std_msgs/Float64MultiArray
   srcIP: PCstatic
   srcPort: 3004

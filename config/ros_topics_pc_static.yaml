@@ -18,68 +18,76 @@ IP:
 send_topics:
 ##笔记本转化的栅格地图（给a,b,c）
 ##笔记本给小车的启动指令
-- topic_name: /start_order
-  msg_type: swarm_ros_bridge/start
-  max_freq: 50 
-  srcIP: PCstatic 
-  srcPort: 3001 
-# ##发a小车需要走的规划路径给a小车
-# - topic_name: /astra_path_a
-#   msg_type: std_msgs/Float64MultiArray
+# - topic_name: /start_order
+#   msg_type: swarm_ros_bridge/start
 #   max_freq: 50 
 #   srcIP: PC2 
-#   srcPort: 3002
-# ##发b小车需要走的规划路径给b小车
-# - topic_name: /astra_path_b
-#   msg_type: std_msgs/Float64MultiArray
-#   max_freq: 50 
-#   srcIP: PC2 
-#   srcPort: 3003 
-# ##发c小车需要走的规划路径给c小车
-# - topic_name: /astra_path_c
-#   msg_type: std_msgs/Float64MultiArray
-#   max_freq: 50 
-#   srcIP: PC2 
-#   srcPort: 3004 
-
-
-# ## 发送给a、b、c车的栅格地图和ymal文件
-# - topic_name: /pgm_image
-#   msg_type: sensor_msgs/Image
-#   max_freq: 25 
-#   srcIP: PC2 
-#   srcPort: 3005 
-
-# - topic_name: /map_yaml
-#   msg_type: swarm_ros_bridge/yamlMsg
-#   max_freq: 25 
-#   srcIP: PC2 
-#   srcPort: 3006 
-
-
-
-
-
-
-##测试使用台式机
-- topic_name: /astra_path_c
+#   srcPort: 3001 
+##发a小车需要走的规划路径给a小车
+- topic_name: /astar_path_a
   msg_type: std_msgs/Float64MultiArray
   max_freq: 50 
-  srcIP: PCstatic 
+  srcIP: PC2 
+  srcPort: 3002
+##发b小车需要走的规划路径给b小车
+- topic_name: /astar_path_b
+  msg_type: std_msgs/Float64MultiArray
+  max_freq: 50 
+  srcIP: PC2 
+  srcPort: 3003 
+##发c小车需要走的规划路径给c小车
+- topic_name: /astar_path_c
+  msg_type: std_msgs/Float64MultiArray
+  max_freq: 50 
+  srcIP: PC2 
   srcPort: 3004 
 
 
+## 发送给a、b、c车的栅格地图和ymal文件
 - topic_name: /pgm_image
   msg_type: sensor_msgs/Image
   max_freq: 25 
-  srcIP: PCstatic 
+  srcIP: PC2 
   srcPort: 3005 
 
 - topic_name: /map_yaml
   msg_type: swarm_ros_bridge/yamlMsg
   max_freq: 25 
-  srcIP: PCstatic 
+  srcIP: PC2 
   srcPort: 3006 
+
+
+
+
+
+
+# ##测试使用台式机
+# - topic_name: /astar_path_c
+#   msg_type: std_msgs/Float64MultiArray
+#   max_freq: 50 
+#   srcIP: PCstatic 
+#   srcPort: 3004 
+
+
+# - topic_name: /pgm_image
+#   msg_type: sensor_msgs/Image
+#   max_freq: 25 
+#   srcIP: PCstatic 
+#   srcPort: 3005 
+
+# - topic_name: /map_yaml
+#   msg_type: swarm_ros_bridge/yamlMsg
+#   max_freq: 25 
+#   srcIP: PCstatic 
+#   srcPort: 3006 
+
+- topic_name: /start_order
+  msg_type: swarm_ros_bridge/start
+  max_freq: 50 
+  srcIP: PCstatic 
+  srcPort: 3001 
+
+
 
 ##无人机传递的地图和图像信息
 ##a、b、c三辆车发送的状态（电量、速度、故障状态）、当前位姿

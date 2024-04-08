@@ -8,9 +8,9 @@
 ### list all <IPname: IP> here (IPname can be set arbitrarily) ###
 IP:
   self: '*'   # '*' stands for all self IPs
-  robota: 192.168.10.104
-  robotb: 192.168.10.105
-  robotc: 192.168.10.103
+  robota: 192.168.10.105
+  robotb: 192.168.10.106
+  robotc: 192.168.10.104
   PC2: 192.168.10.101
 
 ####### Send these ROS messages to remote robots #######i

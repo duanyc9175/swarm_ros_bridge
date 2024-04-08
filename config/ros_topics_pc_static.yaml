@@ -9,10 +9,10 @@
 IP:
   self: '*'   # '*' stands for all self IPs
   robota: 192.168.10.101
-  robotb: 192.168.10.105
+  robotb: 192.168.10.106
   robotc: 192.168.10.103
   airfly: 192.168.10.108
-  PC2: 192.168.10.100
+  PC2: 192.168.10.101
   PCstatic: 192.168.10.102
 
 send_topics:

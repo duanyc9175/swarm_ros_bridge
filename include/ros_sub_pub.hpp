@@ -58,10 +58,10 @@
 #define MSG_TYPE8 "std_msgs/Float64MultiArray"
 #define MSG_CLASS8 std_msgs::Float64MultiArray
 
-// //新增nav_msgs/Path类型的消息
-// #include <nav_msgs/Path.h>
-// #define MSG_TYPE9 "nav_msgs/Path"
-// #define MSG_CLASS9 nav_msgs::Path
+//新增无人机自定义消息
+#include <swarm_ros_bridge/MapData.h>
+#define MSG_TYPE9 "swarm_ros_bridge/MapData"
+#define MSG_CLASS9 swarm_ros_bridge::MapData
 
 
 //新增CompressedImage类型的消息

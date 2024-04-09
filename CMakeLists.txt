@@ -18,6 +18,8 @@ add_message_files(
   global_descriptor.msg
   loop_info.msg
   neighbor_estimate.msg
+
+  #小车消息
   ScoutStatus.msg
   ScoutMotorState.msg
   ScoutLightState.msg
@@ -26,6 +28,21 @@ add_message_files(
   ScoutDriverState.msg
   start.msg
   yamlMsg.msg
+  #无人机消息
+  GPS.msg
+  LandmarkDetection.msg
+  LandmarkDetections.msg
+  EnvSensor.msg
+  GlobalDescriptor.msg
+  SensorData.msg
+  Point3f.msg
+  Point2f.msg
+  KeyPoint.msg
+  Node.msg
+  Link.msg
+  MapGraph.msg
+  MapData.msg
+
 )
 # 生成消息时依赖于 std_msgs
 generate_messages(

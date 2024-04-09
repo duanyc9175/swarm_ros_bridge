@@ -11,7 +11,7 @@ IP:
   robota: 192.168.10.101
   robotb: 192.168.10.106
   robotc: 192.168.10.103
-  airfly: 192.168.10.108
+  airfly: 192.168.10.100
   PC2: 192.168.10.101
   
 
@@ -140,22 +140,22 @@ recv_topics:
   srcIP: robotc
   srcPort: 3043
 
-# #无人机消息 
-# # 栅格地图
+#无人机消息 
+# 栅格地图
 # - topic_name: /OccupancyGrid（待定）
 #   msg_type: nav_msgs/OccupancyGrid
 #   srcIP: airfly
 #   srcPort: 3040
-# # 带点云双目图像话题
-# - topic_name: /vins_fusion/image_track
-#   msg_type: sensor_msgs/Image
-#   srcIP: airfly 
-#   srcPort: 3041 
-# # 历史视觉点云话题(地图)
-# - topic_name: /vins_fusion/margin_cloud
-#   msg_type: sensor_msgs/PointCloud
-#   srcIP: airfly 
-#   srcPort: 3042 
+# 带点云双目图像话题
+- topic_name: /camera/color/image_raw
+  msg_type: sensor_msgs/Image
+  srcIP: airfly 
+  srcPort: 3012 
+# 历史视觉点云话题(地图)
+- topic_name: /rtabmap/mapData
+  msg_type: swarm_ros_bridge/MapData
+  srcIP: airfly 
+  srcPort: 3013 
 
 
 

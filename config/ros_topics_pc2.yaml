@@ -147,10 +147,15 @@ recv_topics:
 #   srcIP: airfly
 #   srcPort: 3040
 # 带点云双目图像话题
-- topic_name: /camera/color/image_raw
-  msg_type: sensor_msgs/Image
+# - topic_name: /camera/color/image_raw
+#   msg_type: sensor_msgs/Image
+#   srcIP: airfly 
+#   srcPort: 3012 
+
+- topic_name: /camera/color/image_raw/compressed
+  msg_type: sensor_msgs/CompressedImage
   srcIP: airfly 
-  srcPort: 3012 
+  srcPort: 3014 
 # 历史视觉点云话题(地图)
 - topic_name: /rtabmap/mapData
   msg_type: swarm_ros_bridge/MapData

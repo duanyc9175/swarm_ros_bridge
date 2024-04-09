@@ -22,11 +22,16 @@ send_topics:
 #   max_freq: 10 
 #   srcPort: 3011
 # 带点云双目图像话题
-- topic_name: /camera/color/image_raw
-  msg_type: sensor_msgs/Image
+# - topic_name: /camera/color/image_raw
+#   msg_type: sensor_msgs/Image
+#   max_freq: 50 
+#   srcIP: airfly 
+#   srcPort: 3012 
+- topic_name: /camera/color/image_raw/compressed
+  msg_type: sensor_msgs/CompressedImage
   max_freq: 50 
   srcIP: airfly 
-  srcPort: 3012 
+  srcPort: 3014 
 # 历史视觉点云话题(地图)
 - topic_name: /rtabmap/mapData
   msg_type: swarm_ros_bridge/MapData

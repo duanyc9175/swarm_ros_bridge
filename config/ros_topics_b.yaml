@@ -27,13 +27,13 @@ send_topics:
   msg_type: swarm_ros_bridge/ScoutStatus
   max_freq: 10
   srcIP: robotb
-  srcPort: 3022
+  srcPort: 3032
 
 - topic_name: /BMS_status_b
   msg_type: swarm_ros_bridge/ScoutBmsStatus
   max_freq: 10
   srcIP: robotb
-  srcPort: 3023
+  srcPort: 3033
 
 ## 笔记本传来的消息
 ## 1.启动指令///

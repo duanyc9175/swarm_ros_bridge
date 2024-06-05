@@ -8,10 +8,10 @@
 ### list all <IPname: IP> here (IPname can be set arbitrarily) ###
 IP:
   self: '*'   # '*' stands for all self IPs
-  robota: 192.168.10.104
+  robota: 192.168.30.114
   robotb: 192.168.10.105
-  robotc: 192.168.10.103
-  PC2: 192.168.10.101
+  robotc: 192.168.30.116
+  PC2: 192.168.30.121
   PCstatic: 192.168.10.102
 
 ####### Send these ROS messages to remote robots #######i
@@ -54,12 +54,12 @@ recv_topics:
 ## 1.启动指令
 - topic_name: /start_order
   msg_type: swarm_ros_bridge/start
-  srcIP: PCstatic
+  srcIP: PC2
   srcPort: 3001
 ## 2.规划好的路径//##发a小车需要走的规划路径给a小车
 - topic_name: /astar_path_c
   msg_type: std_msgs/Float64MultiArray
-  srcIP: PCstatic
+  srcIP: PC2
   srcPort: 3004
 
 ## 接收传输的png的图片和yaml文件

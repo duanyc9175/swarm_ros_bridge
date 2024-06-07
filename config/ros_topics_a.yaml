@@ -8,8 +8,6 @@
 IP:
   self: '*'   # '*' stands for all self IPs
   robota: 192.168.30.114
-  robotb: 192.168.10.105
-  robotc: 192.168.30.116
   PC2: 192.168.30.121
 
 

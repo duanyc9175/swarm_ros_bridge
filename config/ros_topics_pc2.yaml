@@ -18,11 +18,11 @@ IP:
 send_topics:
 ##笔记本转化的栅格地图（给a,b,c）
 ##笔记本给小车的启动指令
-# - topic_name: /start_order
-#   msg_type: swarm_ros_bridge/start
-#   max_freq: 50 
-#   srcIP: PC2 
-#   srcPort: 3001 
+- topic_name: /start_order
+  msg_type: swarm_ros_bridge/start
+  max_freq: 50 
+  srcIP: PC2 
+  srcPort: 3001 
 ##发a小车需要走的规划路径给a小车
 - topic_name: /astar_path_a
   msg_type: std_msgs/Float64MultiArray

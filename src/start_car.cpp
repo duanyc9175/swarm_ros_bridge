@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Int32.h>
+#include <sys/utsname.h>
 #include <swarm_ros_bridge/start.h>
 
 using namespace std;

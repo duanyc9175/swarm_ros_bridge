@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Int32.h>
+#include <sys/utsname.h>
 #include <swarm_ros_bridge/start.h>
 
 using namespace std;
@@ -43,7 +44,15 @@ int main(int argc, char **argv)
         msg.index_c = order_c;
         start_order_pc.publish(msg);
 
+        // 获得主板序列号 sudo dmidecode -t 2 | grep Serial
+        struct utsname uts;
+        uname(&uts);
+        ROS_INFO("主板序列号：%s", uts.nodename);
         
+        
+
+
+
     }
     ros::spin();
 }

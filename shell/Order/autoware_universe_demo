@@ -1,0 +1,15 @@
+ros2 launch autoware_launch planning_simulator.launch.xml map_path:=/home/nvidia/autoware_map/sample-map-planning vehicle_model:=sample_vehicle sensor_model:=sample_sensor_kit
+
+    /localization/acceleration: geometry_msgs/msg/AccelWithCovarianceStamped
+    /localization/kinematic_state: nav_msgs/msg/Odometry
+    /map/vector_map: autoware_auto_mapping_msgs/msg/HADMapBin
+    /parameter_events: rcl_interfaces/msg/ParameterEvent
+    /perception/object_recognition/objects: autoware_auto_perception_msgs/msg/PredictedObjects
+    /perception/occupancy_grid_map/map: nav_msgs/msg/OccupancyGrid
+    /perception/traffic_light_recognition/traffic_signals: autoware_perception_msgs/msg/TrafficSignalArray
+    /planning/mission_planning/route: autoware_planning_msgs/msg/LaneletRoute
+    /planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/input/lateral_offset: tier4_planning_msgs/msg/LateralOffset
+    /planning/scenario_planning/parking/costmap_generator/occupancy_grid: nav_msgs/msg/OccupancyGrid
+    /planning/scenario_planning/scenario: tier4_planning_msgs/msg/Scenario
+    /system/operation_mode/state: autoware_adapi_v1_msgs/msg/OperationModeState
+

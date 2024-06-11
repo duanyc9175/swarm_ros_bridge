@@ -6,37 +6,18 @@
 
 using namespace std;
 // 定义文件路径
-string file_start_a = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/one-click_a.sh";
-string file_start_b = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/one-click_b.sh";
-string file_start_c = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/one-click_c.sh";
-string file_a = std::getenv("HOME") + file_start_a;
-string file_b = std::getenv("HOME") + file_start_b;
-string file_c = std::getenv("HOME") + file_start_c;
+// string file_start_a = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/one-click_a.sh";
+// string file_start_b = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/one-click_b.sh";
+// string file_start_c = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/one-click_c.sh";
+// string file_a = std::getenv("HOME") + file_start_a;
+// string file_b = std::getenv("HOME") + file_start_b;
+// string file_c = std::getenv("HOME") + file_start_c;
 
-string file_auto_sh = "/Shell/auto_drive.sh";
+string file_auto_sh = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/Order/auto_drive.sh";
 string file_auto = std::getenv("HOME") + file_auto_sh;
 
 // 定义赋予权限的命令
-std::string command = "chmod 777 " + file_a + " " + file_b + " " + file_c;
-
-std::string getMotherboardSerialNumber()
-{
-    std::array<char, 128> buffer;
-    std::string result;
-    std::unique_ptr<FILE, decltype(&pclose)> pipe(popen("sudo dmidecode -t 2 | grep Serial", "r"), pclose);
-
-    if (!pipe)
-    {
-        throw std::runtime_error("popen() failed!");
-    }
-
-    while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr)
-    {
-        result += buffer.data();
-    }
-
-    return result;
-}
+// std::string command = "chmod 777 " + file_a + " " + file_b + " " + file_c;
 
 void order_action(const int order, const string name)
 {
@@ -50,7 +31,7 @@ void order_action(const int order, const string name)
     case 1:
         ROS_INFO("%s车辆启动", robot_now.c_str());
         // 赋予file文件权限
-        system(command.c_str());
+        // system(command.c_str());
         // 调用shell文件
         if (robot_now == "a")
         {

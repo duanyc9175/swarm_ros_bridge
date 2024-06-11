@@ -19,7 +19,4 @@ sleep 2s
     echo “lpms successfully started”
 }&
 sleep 2s
-{
-    gnome-terminal -t "cslam" -- bash -c "cd /home/nvidia/cslam_ws;source devel/setup.bash;roslaunch dcl_slam run-test.launch;exec bash"
-    echo “lpms successfully started”
-}&
+

@@ -14,10 +14,29 @@ string file_b = std::getenv("HOME") + file_start_b;
 string file_c = std::getenv("HOME") + file_start_c;
 
 string file_auto_sh = "/Shell/auto_drive.sh";
-string file_auto =std::getenv("HOME") + file_auto_sh;
+string file_auto = std::getenv("HOME") + file_auto_sh;
 
 // 定义赋予权限的命令
 std::string command = "chmod 777 " + file_a + " " + file_b + " " + file_c;
+
+std::string getMotherboardSerialNumber()
+{
+    std::array<char, 128> buffer;
+    std::string result;
+    std::unique_ptr<FILE, decltype(&pclose)> pipe(popen("sudo dmidecode -t 2 | grep Serial", "r"), pclose);
+
+    if (!pipe)
+    {
+        throw std::runtime_error("popen() failed!");
+    }
+
+    while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr)
+    {
+        result += buffer.data();
+    }
+
+    return result;
+}
 
 void order_action(const int order, const string name)
 {
@@ -48,8 +67,6 @@ void order_action(const int order, const string name)
             // popen(file_c.c_str(), "r");
             popen(file_auto.c_str(), "r");
         }
-
-        ROS_INFO("启动文件执行完毕");
         break;
     case 2:
         ROS_INFO("车辆停止");
@@ -64,16 +81,30 @@ void order_action(const int order, const string name)
 
 void startCallback(const swarm_ros_bridge::start::ConstPtr &msg)
 {
-    string name_a = "a", name_b = "b", name_c = "c";
-    // a车消息
-    int order_a = msg->index_a;
-    order_action(order_a, name_a);
-    // b车消息
-    int order_b = msg->index_b;
-    order_action(order_b, name_b);
-    // c车消息
-    int order_c = msg->index_c;
-    order_action(order_c, name_c);
+    // 车辆名称
+    if (msg->uav_name == "a")
+    {
+        string name_a = "a";
+        // a车消息
+        int order_a = msg->index_a;
+        order_action(order_a, name_a);
+    }
+    else if (msg->uav_name == "b")
+    {
+        string name_b = "b"; // b车消息
+        int order_b = msg->index_b;
+        order_action(order_b, name_b);
+    }
+    else if (msg->uav_name == "c")
+    {
+        string name_c = "c"; // c车消息
+        int order_c = msg->index_c;
+        order_action(order_c, name_c);
+    }
+    else
+    {
+        ROS_ERROR("无效的车辆指令！");
+    }
 }
 
 int main(int argc, char **argv)
@@ -87,13 +118,17 @@ int main(int argc, char **argv)
     ros::Subscriber start_order = nh.subscribe<swarm_ros_bridge::start>("start_order", 1, startCallback);
 
     // 如果没有发布者，等待5s
-    while (start_order.getNumPublishers() == 0 && ros::ok())
+    while (ros::ok())
     {
-        ROS_INFO("等待发布者");
-        ros::Duration(1.0).sleep();
-    }
+        if (!start_order.getNumPublishers())
+        {
+            ROS_INFO("等待发布者");
+            ros::Duration(1.0).sleep();
+            continue;
+        }
 
-    ros::spin();
+        ros::spinOnce();
+    }
 
     return 0;
 }

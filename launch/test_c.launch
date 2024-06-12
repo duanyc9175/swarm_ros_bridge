@@ -4,6 +4,6 @@
   <node pkg="swarm_ros_bridge" type="bridge_node" name="swarm_bridge_node" output="screen" >
     <rosparam command="load" file="$(find swarm_ros_bridge)/config/ros_topics_c.yaml" />
   </node>
-    <!-- <node pkg="swarm_ros_bridge" type="start_car" name="start_car" output="screen" /> -->
+    <node pkg="swarm_ros_bridge" type="start_car" name="start_car" output="screen" />
 
 </launch>

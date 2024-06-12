@@ -6,6 +6,6 @@
     <rosparam command="load" file="$(find swarm_ros_bridge)/config/ros_topics_pc2.yaml" />
   </node>
   
-  <!-- <node pkg="swarm_ros_bridge" type="start_pc" name="start_pc" output="screen" /> -->
+  <node pkg="swarm_ros_bridge" type="start_pc" name="start_pc" output="screen" />
 
 </launch>

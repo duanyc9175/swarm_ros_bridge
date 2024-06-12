@@ -8,7 +8,7 @@ using namespace std;
 // 定义文件路径
 // string file_start_a = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/one-click_a.sh";
 // string file_start_b = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/one-click_b.sh";
-// string file_start_c = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/one-click_c.sh";
+string file_start_c = "./one-click_c.sh";
 // string file_a = std::getenv("HOME") + file_start_a;
 // string file_b = std::getenv("HOME") + file_start_b;
 // string file_c = std::getenv("HOME") + file_start_c;
@@ -36,9 +36,7 @@ void order_action(const int order, const string name)
         ROS_INFO("%s车辆待机", robot_now.c_str());
         break;
     case 1:
-        ROS_INFO("%s车辆启动", robot_now.c_str());
-        // 赋予file文件权限
-        
+        ROS_INFO("%s车辆启动", robot_now.c_str());        
         // 调用shell文件
         if (robot_now == "a")
         {
@@ -54,7 +52,7 @@ void order_action(const int order, const string name)
         if (robot_now == "c")
         {
             // popen(file_c.c_str(), "r");
-            popen(file_auto.c_str(), "r");
+            popen(file_start_c.c_str(), "r");
         }
         break;
     case 2:

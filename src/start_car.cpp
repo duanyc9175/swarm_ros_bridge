@@ -8,27 +8,22 @@ using namespace std;
 // 定义文件路径
 // string file_start_a = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/one-click_a.sh";
 // string file_start_b = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/one-click_b.sh";
-string file_start_c = "./one-click_c.sh";
+string file_start_c = "./one-click.sh";
 // string file_a = std::getenv("HOME") + file_start_a;
 // string file_b = std::getenv("HOME") + file_start_b;
 // string file_c = std::getenv("HOME") + file_start_c;
 
-string file_auto_sh = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/Order/auto_drive.sh";
-string file_path = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/Order";
-string file_auto = std::getenv("HOME") + file_auto_sh;
+// string file_auto_sh = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/Order/auto_drive.sh";
+// string file_path = "/swarm_ros_bridge/src/swarm_ros_bridge/shell/Order";
+// string file_auto = std::getenv("HOME") + file_auto_sh;
 
 // 定义赋予权限的命令
 // std::string command = "chmod 777 " + file_a + " " + file_b + " " + file_c;
-std::string command = "gnome-terminal -- bash -c 'cd " + file_path + " && exec bash'";
+std::string command = "gnome-terminal -- bash -c 'cd &&sh ./one-click.sh'";
 
 void order_action(const int order, const string name)
 {
     string robot_now = name;
-    int result = system(command.c_str());
-        if (result == -1)
-        {
-            std::cerr << "Failed to execute command." << std::endl;
-        }
     switch (order)
     {
     case 0:
@@ -36,24 +31,24 @@ void order_action(const int order, const string name)
         ROS_INFO("%s车辆待机", robot_now.c_str());
         break;
     case 1:
-        ROS_INFO("%s车辆启动", robot_now.c_str());        
         // 调用shell文件
         if (robot_now == "a")
         {
-            // 运行命令行打开窗口，输入cd 跳转到指定位置
-
-            popen(file_auto.c_str(), "r");
+            ROS_INFO("%s车辆启动", robot_now.c_str());
+            system(command.c_str()); // popen(file_start_c.c_str(), "r");
         }
         if (robot_now == "b")
         {
-            // popen(file_b.c_str(), "r");
-            popen(file_auto.c_str(), "r");
+            ROS_INFO("%s车辆启动", robot_now.c_str());
+            system(command.c_str()); // popen(file_start_c.c_str(), "r");
         }
         if (robot_now == "c")
         {
-            // popen(file_c.c_str(), "r");
-            popen(file_start_c.c_str(), "r");
+            ROS_INFO("%s车辆启动", robot_now.c_str());
+            system(command.c_str()); // popen(file_start_c.c_str(), "r");
         }
+        ROS_INFO("%s启动完毕", robot_now.c_str());
+
         break;
     case 2:
         ROS_INFO("车辆停止");

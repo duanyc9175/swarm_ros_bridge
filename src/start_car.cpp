@@ -2,7 +2,6 @@
 #include <std_msgs/String.h>
 #include <std_msgs/Int8.h>
 #include <sys/utsname.h>
-#include <swarm_ros_bridge/start.h>
 
 using namespace std;
 // 定义文件路径

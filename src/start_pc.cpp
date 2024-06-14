@@ -2,7 +2,6 @@
 #include <std_msgs/String.h>
 #include <std_msgs/Int32.h>
 #include <sys/utsname.h>
-#include <swarm_ros_bridge/start.h>
 
 using namespace std;
 // 0待机，1启动，2停止

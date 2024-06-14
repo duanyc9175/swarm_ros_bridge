@@ -26,7 +26,7 @@ add_message_files(
   ScoutLightCmd.msg
   ScoutBmsStatus.msg
   ScoutDriverState.msg
-  start.msg
+  # start.msg
   yamlMsg.msg
   #无人机消息
   GPS.msg
@@ -82,9 +82,9 @@ target_link_libraries(start_car
    ${catkin_LIBRARIES}
 )
 
-add_executable(start_pc src/start_pc.cpp)
-add_dependencies(start_pc ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_executable(start_pc src/start_pc.cpp)
+# add_dependencies(start_pc ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-target_link_libraries(start_pc
-   ${catkin_LIBRARIES}
-)
+# target_link_libraries(start_pc
+#    ${catkin_LIBRARIES}
+# )

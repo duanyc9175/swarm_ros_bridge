@@ -37,22 +37,16 @@ send_topics:
 ## 1.启动指令///
 ## 2.规划好的路径//##发c小车需要走的规划路径给a小车
 recv_topics:
-# ## 1.启动指令
+## 1.启动指令
 # - topic_name: /start_order
 #   msg_type: swarm_ros_bridge/start
 #   srcIP: PC2
 #   srcPort: 3001
-# ## 2.规划好的路径//##发a小车需要走的规划路径给a小车
-# - topic_name: /astar_path_c
-#   msg_type: std_msgs/Float64MultiArray
-#   srcIP: PC2
-#   srcPort: 3004
 
-## 1.启动指令
-- topic_name: /start_order
-  msg_type: swarm_ros_bridge/start
+- topic_name: /cmd_C
+  msg_type: std_msgs/Int8
   srcIP: PC2
-  srcPort: 3001
+  srcPort: 3009
 ## 2.规划好的路径//##发a小车需要走的规划路径给a小车
 - topic_name: /astar_path_c
   msg_type: std_msgs/Float64MultiArray

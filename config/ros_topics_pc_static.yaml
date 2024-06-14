@@ -80,11 +80,11 @@ send_topics:
 #   srcIP: PCstatic 
 #   srcPort: 3006 
 
-- topic_name: /start_order
-  msg_type: swarm_ros_bridge/start
-  max_freq: 50 
-  srcIP: PCstatic 
-  srcPort: 3001 
+# - topic_name: /start_order
+#   msg_type: swarm_ros_bridge/start
+#   max_freq: 50 
+#   srcIP: PCstatic 
+#   srcPort: 3001 
 
 
 

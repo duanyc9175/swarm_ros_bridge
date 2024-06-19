@@ -47,7 +47,17 @@ recv_topics:
   msg_type: std_msgs/Int8
   srcIP: PC2
   srcPort: 3009
-## 2.规划好的路径//##发a小车需要走的规划路径给a小车
+## 2.规划好的路径 发a，b，c小车需要走的规划路径给a小车
+- topic_name: /astar_path_a
+  msg_type: std_msgs/Float64MultiArray
+  srcIP: PC2
+  srcPort: 3002
+
+- topic_name: /astar_path_b
+  msg_type: std_msgs/Float64MultiArray
+  srcIP: PC2
+  srcPort: 3003
+
 - topic_name: /astar_path_c
   msg_type: std_msgs/Float64MultiArray
   srcIP: PC2

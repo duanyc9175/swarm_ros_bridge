@@ -10,7 +10,6 @@ IP:
   robota: 192.168.30.114
   PC2: 192.168.30.121
 
-
 ####### Send these ROS messages to remote robots #######i
 ## if no send_topics needed, comment all these out
 send_topics:
@@ -33,7 +32,6 @@ send_topics:
   srcIP: robota
   srcPort: 3023
 
-
 ## 笔记本传来的消息
 recv_topics:
 ## 1.启动指令
@@ -46,11 +44,21 @@ recv_topics:
   srcIP: PC2
   srcPort: 3007
 
-## 2.规划好的路径 发a小车需要走的规划路径给a小车
+## 2.规划好的路径 发a，b，c小车需要走的规划路径给a小车
 - topic_name: /astar_path_a
   msg_type: std_msgs/Float64MultiArray
   srcIP: PC2
   srcPort: 3002
+
+- topic_name: /astar_path_b
+  msg_type: std_msgs/Float64MultiArray
+  srcIP: PC2
+  srcPort: 3003
+
+- topic_name: /astar_path_c
+  msg_type: std_msgs/Float64MultiArray
+  srcIP: PC2
+  srcPort: 3004
 
 ## 接收传输的png的图片和yaml文件
 

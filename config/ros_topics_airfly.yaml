@@ -8,8 +8,8 @@
 ### list all <IPname: IP> here (IPname can be set arbitrarily) ###
 IP:
   self: '*'   # '*' stands for all self IPs
-  PC2: 192.168.30.121
-  airfly: 192.168.30.176
+  PC2: 192.168.30.102
+  airfly: 192.168.30.109
 
 ####### Send these ROS messages to remote robots #######i
 ## if no send_topics needed, comment all these out

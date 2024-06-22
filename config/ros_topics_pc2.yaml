@@ -8,11 +8,11 @@
 ### list all <IPname: IP> here (IPname can be set arbitrarily) ###
 IP:
   self: '*'   # '*' stands for all self IPs
-  robota: 192.168.30.100
-  robotb: 192.168.30.106
-  robotc: 192.168.30.104
-  airfly: 192.168.30.109
-  PC2: 192.168.30.102
+  robota: 192.168.31.219
+  robotb: 192.168.31.133
+  robotc: 192.168.31.21
+  airfly: 192.168.31.231
+  PC2: 192.168.31.266
   
 send_topics:
 ##笔记本转化的栅格地图（给a,b,c）

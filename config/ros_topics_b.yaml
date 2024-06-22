@@ -8,8 +8,8 @@
 ### list all <IPname: IP> here (IPname can be set arbitrarily) ###
 IP:
   self: '*'   # '*' stands for all self IPs
-  robotb: 192.168.30.106
-  PC2: 192.168.30.102
+  robotb: 192.168.31.133
+  PC2: 192.168.31.266
 
 ####### Send these ROS messages to remote robots #######i
 ## if no send_topics needed, comment all these out

@@ -8,7 +8,7 @@
 IP:
   self: '*'   # '*' stands for all self IPs
   robota: 192.168.31.219
-  PC2: 192.168.31.266
+  PC2: 192.168.31.226
 
 ####### Send these ROS messages to remote robots #######i
 ## if no send_topics needed, comment all these out

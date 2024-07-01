@@ -10,7 +10,7 @@ IP:
   self: '*'   # '*' stands for all self IPs
   robota: 192.168.31.219
   robotb: 192.168.31.133
-  robotc: 192.168.31.21
+  robotc: 192.168.31.211
   airfly: 192.168.31.231
   PC2: 192.168.31.226
   

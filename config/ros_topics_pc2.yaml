@@ -8,20 +8,13 @@
 ### list all <IPname: IP> here (IPname can be set arbitrarily) ###
 IP:
   self: '*'   # '*' stands for all self IPs
-  robota: 192.168.31.219
-  robotb: 192.168.31.133
-  robotc: 192.168.31.211
+  robota: 192.168.57.112
+  robotb: 192.168.57.117
+  robotc: 192.168.57.121
   airfly: 192.168.31.231
-  PC2: 192.168.31.226
+  PC2: 192.168.57.1
   
 send_topics:
-##笔记本转化的栅格地图（给a,b,c）
-##笔记本给小车的启动指令
-# - topic_name: /start_order
-#   msg_type: swarm_ros_bridge/start
-#   max_freq: 50 
-#   srcIP: PC2 
-#   srcPort: 3001 
 ##发a小车需要走的规划路径给a小车
 - topic_name: /astar_path_a
   msg_type: std_msgs/Float64MultiArray

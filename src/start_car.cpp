@@ -113,14 +113,10 @@ int main(int argc, char **argv)
     {
         ROS_INFO("等待发布者");
     }
-    ros::Rate loop_rate(10); // 10hz
     while (ros::ok())
     {
         is_connected.publish(is_connected_msg);
-        is_connected_msg.data++;
-
         ros::spinOnce();
-        loop_rate.sleep();
     }
 
     return 0;

@@ -32,6 +32,12 @@ send_topics:
   srcIP: robota
   srcPort: 3023
 
+- topic_name: /is_connected
+  msg_type: std_msgs/Int64
+  max_freq: 10
+  srcIP: robota
+  srcPort: 3024
+
 ## 笔记本传来的消息
 recv_topics:
 ## 1.启动指令

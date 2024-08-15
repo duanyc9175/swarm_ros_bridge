@@ -1,12 +1,114 @@
 #include <ros/ros.h>
 #include <std_msgs/String.h>
 #include <std_msgs/Int32.h>
+#include <std_msgs/Int64.h>
 #include <sys/utsname.h>
 
 using namespace std;
-// 0待机，1启动，2停止
-int order_list[3] = {0, 1, 2};
-int order_a = 0, order_b = 0, order_c = 0;
+// 时间
+ros::Time A_last_received_time, B_last_received_time, C_last_received_time;
+bool A_connection_active = true, B_connection_active = true, C_connection_active = true;
+
+// 定时器回调函数，用于检查连接状态
+void A_timerCallback(const ros::TimerEvent &)
+{
+    ros::Duration duration_since_last_msg = ros::Time::now() - A_last_received_time;
+    double duration_sec = duration_since_last_msg.toSec();
+    if (duration_sec >= 3.0) // 检查是否超过3秒
+    {
+        if (A_connection_active)
+        {
+            ROS_WARN("A connection lost");
+            A_connection_active = false;
+        }
+    }
+    else
+    {
+        if (!A_connection_active) // 重新收到消息，恢复连接
+        {
+            ROS_INFO("A connection restored.");
+            A_connection_active = true;
+        }
+    }
+}
+
+void B_timerCallback(const ros::TimerEvent &)
+{
+    ros::Duration duration_since_last_msg = ros::Time::now() - B_last_received_time;
+    double duration_sec = duration_since_last_msg.toSec();
+    if (duration_sec >= 3.0) // 检查是否超过3秒
+    {
+        if (B_connection_active)
+        {
+            ROS_WARN("B connection lost");
+
+            B_connection_active = false;
+        }
+    }
+    else
+    {
+        if (!B_connection_active) // 重新收到消息，恢复连接
+        {
+            ROS_INFO("B connection restored.");
+            B_connection_active = true;
+        }
+    }
+}
+
+void C_timerCallback(const ros::TimerEvent &)
+{
+    ros::Duration duration_since_last_msg = ros::Time::now() - C_last_received_time;
+    double duration_sec = duration_since_last_msg.toSec();
+    if (duration_sec >= 3.0) // 检查是否超过3秒
+    {
+        if (C_connection_active)
+        {
+            ROS_WARN("C connection lost");
+            C_connection_active = false;
+        }
+    }
+    else
+    {
+        if (!C_connection_active) // 重新收到消息，恢复连接
+        {
+            ROS_INFO("C connection restored.");
+            C_connection_active = true;
+        }
+    }
+}
+
+void connect_stu_A(const std_msgs::Int64::ConstPtr &msg)
+{
+    // ROS_INFO("Received message from A: %ld", msg->data);
+    A_last_received_time = ros::Time::now();
+    if (!A_connection_active) // 检查连接是否从断开到恢复
+    {
+        ROS_INFO("A connection restored.");
+        A_connection_active = true;
+    }
+}
+
+void connect_stu_B(const std_msgs::Int64::ConstPtr &msg)
+{
+    // ROS_INFO("Received message from B: %ld", msg->data);
+    B_last_received_time = ros::Time::now();
+    if (!B_connection_active) // 检查连接是否从断开到恢复
+    {
+        ROS_INFO("B connection restored.");
+        B_connection_active = true;
+    }
+}
+
+void connect_stu_C(const std_msgs::Int64::ConstPtr &msg)
+{
+    // ROS_INFO("Received message from C: %ld", msg->data);
+    C_last_received_time = ros::Time::now();
+    if (!C_connection_active) // 检查连接是否从断开到恢复
+    {
+        ROS_INFO("C connection restored.");
+        C_connection_active = true;
+    }
+}
 
 int main(int argc, char **argv)
 {
@@ -14,70 +116,19 @@ int main(int argc, char **argv)
     ros::NodeHandle nh;
     //   识别中文
     setlocale(LC_ALL, "");
-    // 接收特定启动指令，并运行制定位置的命令shell文件，或者启动指定的指令
-    ROS_INFO("车辆处于待机状态，等待启动。0待机，1启动，2停止。");
-    ros::Publisher start_order_pc = nh.advertise<swarm_ros_bridge::start>("start_order", 1);
+    // 分别接收三个车发来的int64类型的消息
+    ros::Subscriber sub_A = nh.subscribe("/A_is_connected", 1000, connect_stu_A);
+    ros::Subscriber sub_B = nh.subscribe("/B_is_connected", 1000, connect_stu_B);
+    ros::Subscriber sub_C = nh.subscribe("/C_is_connected", 1000, connect_stu_C);
+    // 初始化最后接收消息的时间
+    A_last_received_time = ros::Time::now();
+    B_last_received_time = ros::Time::now();
+    C_last_received_time = ros::Time::now();
 
-    while (ros::ok())
-    {
-        swarm_ros_bridge::start msg;
-        // 读取键盘输入
-        char car;
-        cout << "请输入接收指令的车辆（a、b、c）：";
-        cin >> car;
-        // 根据不同车辆执行不同操作
-        if (car == 'a')
-        {
-            cout << "请输入" << car << "车的指令：";
-            cin >> order_a;
-            // 检查输入是否在指定的指令列表中
-            if (std::find(std::begin(order_list), std::end(order_list), order_a) == std::end(order_list))
-            {
-                ROS_ERROR("输入指令不合法！");
-                break;
-            }
-            msg.uav_name = "a";
-            msg.index_a = order_a;
-            msg.index_b = order_b;
-            msg.index_c = order_c;
-        }
-        else if (car == 'b')
-        {
-            cout << "请输入" << car << "车的指令：";
-            cin >> order_b;
-            // 检查输入是否在指定的指令列表中
-            if (std::find(std::begin(order_list), std::end(order_list), order_b) == std::end(order_list))
-            {
-                ROS_ERROR("输入指令不合法！");
-                break;
-            }
-            msg.uav_name = "b";
-            msg.index_a = order_a;
-            msg.index_b = order_b;
-            msg.index_c = order_c;
-        }
-        else if (car == 'c')
-        {
-            cout << "请输入" << car << "车的指令：";
-            cin >> order_c;
-            // 检查输入是否在指定的指令列表中
-            if (std::find(std::begin(order_list), std::end(order_list), order_c) == std::end(order_list))
-            {
-                ROS_ERROR("输入指令不合法！");
-                break;
-            }
-            msg.uav_name = "c";
-            msg.index_a = order_a;
-            msg.index_b = order_b;
-            msg.index_c = order_c;
-        }
-        else
-        {
-            ROS_ERROR("无效的车辆指令！");
-            break;
-        }
+    // 创建定时器，每秒检查一次连接状态
+    ros::Timer A_timer = nh.createTimer(ros::Duration(1.0), A_timerCallback);
+    ros::Timer B_timer = nh.createTimer(ros::Duration(1.0), B_timerCallback);
+    ros::Timer C_timer = nh.createTimer(ros::Duration(1.0), C_timerCallback);
 
-        start_order_pc.publish(msg);
-        ros::spinOnce();
-    }
+    ros::spin();
 }

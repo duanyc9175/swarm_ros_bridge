@@ -13,6 +13,7 @@ IP:
   robotc: 192.168.57.121
   airfly: 100.104.128.117
   PC2: 192.168.57.1
+  # PC3: 127.0.0.1
   
 send_topics:
 ##发a小车需要走的规划路径给a小车
@@ -70,6 +71,22 @@ send_topics:
 ##无人机传递的地图和图像信息
 ##a、b、c三辆车发送的状态（电量、速度、故障状态）、当前位姿
 recv_topics:
+#通讯状态
+- topic_name: /A_is_connected
+  msg_type: std_msgs/Int64
+  srcIP: robota
+  srcPort: 3024
+
+- topic_name: /B_is_connected
+  msg_type: std_msgs/Int64
+  srcIP: robotb
+  srcPort: 3034
+
+- topic_name: /C_is_connected
+  msg_type: std_msgs/Int64
+  srcIP: robotc
+  srcPort: 3044
+
 #a车发的消息 
 - topic_name: /a/ndt_pose
   msg_type: geometry_msgs/PoseStamped

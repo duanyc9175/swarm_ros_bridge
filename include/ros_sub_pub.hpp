@@ -23,21 +23,15 @@
 #define __ROS_SUB_PUB__
 #include <ros/ros.h>
 
-#include <nav_msgs/OccupancyGrid.h>
-#define MSG_TYPE1 "nav_msgs/OccupancyGrid"
-#define MSG_CLASS1 nav_msgs::OccupancyGrid
-
+// 判断是否稳定连接
+// #include <std_msgs/Bool.h>
+// #define MSG_TYPE1 "std_msgs/Bool"
+// #define MSG_CLASS1 std_msgs::Bool
+// *******小车
+// 位置信息
 #include <geometry_msgs/PoseStamped.h>
 #define MSG_TYPE2 "geometry_msgs/PoseStamped"
 #define MSG_CLASS2 geometry_msgs::PoseStamped
-// 启动指令
-#include <std_msgs/Int8.h>
-#define MSG_TYPE3 "std_msgs/Int8"
-#define MSG_CLASS3 std_msgs::Int8
-
-#include <sensor_msgs/PointCloud2.h>
-#define MSG_TYPE4 "sensor_msgs/PointCloud2"
-#define MSG_CLASS4 sensor_msgs::PointCloud2
 
 // 增加自定义:车辆状态：电量、速度、故障状态
 #include <swarm_ros_bridge/ScoutStatus.h>
@@ -48,6 +42,17 @@
 #define MSG_TYPE6 "swarm_ros_bridge/ScoutBmsStatus"
 #define MSG_CLASS6 swarm_ros_bridge::ScoutBmsStatus
 
+// ********服务器
+// 启动指令
+#include <std_msgs/Int8.h>
+#define MSG_TYPE3 "std_msgs/Int8"
+#define MSG_CLASS3 std_msgs::Int8
+
+#include <sensor_msgs/PointCloud2.h>
+#define MSG_TYPE4 "sensor_msgs/PointCloud2"
+#define MSG_CLASS4 sensor_msgs::PointCloud2
+
+// *******导航
 // 增加自定义的ymal文件
 #include <swarm_ros_bridge/yamlMsg.h>
 #define MSG_TYPE7 "swarm_ros_bridge/yamlMsg"
@@ -58,25 +63,26 @@
 #define MSG_TYPE8 "std_msgs/Float64MultiArray"
 #define MSG_CLASS8 std_msgs::Float64MultiArray
 
-// 新增无人机自定义消息
-#include <swarm_ros_bridge/MapData.h>
-#define MSG_TYPE9 "swarm_ros_bridge/MapData"
-#define MSG_CLASS9 swarm_ros_bridge::MapData
-
-// 新增CompressedImage类型的消息
-#include <sensor_msgs/CompressedImage.h>
-#define MSG_TYPE10 "sensor_msgs/CompressedImage"
-#define MSG_CLASS10 sensor_msgs::CompressedImage
-
 // 新增image类型的消息
 #include <sensor_msgs/Image.h>
 #define MSG_TYPE11 "sensor_msgs/Image"
 #define MSG_CLASS11 sensor_msgs::Image
 
+// *******无人机
+// 历史视觉点云话题(地图)
+#include <swarm_ros_bridge/MapData.h>
+#define MSG_TYPE9 "swarm_ros_bridge/MapData"
+#define MSG_CLASS9 swarm_ros_bridge::MapData
+
+// 实时图像话题，新增CompressedImage类型的消息
+#include <sensor_msgs/CompressedImage.h>
+#define MSG_TYPE10 "sensor_msgs/CompressedImage"
+#define MSG_CLASS10 sensor_msgs::CompressedImage
+
 // 新增sensor_msgs/PointCloud类型的消息
-#include <sensor_msgs/PointCloud.h>
-#define MSG_TYPE12 "sensor_msgs/PointCloud"
-#define MSG_CLASS12 sensor_msgs::PointCloud
+// #include <sensor_msgs/PointCloud.h>
+// #define MSG_TYPE12 "sensor_msgs/PointCloud"
+// #define MSG_CLASS12 sensor_msgs::PointCloud
 
 #define SUB_MAX 70 // max number of subscriber callbacks
 

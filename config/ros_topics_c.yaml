@@ -33,6 +33,12 @@ send_topics:
   srcIP: robotc
   srcPort: 3043
 
+- topic_name: /is_connected
+  msg_type: std_msgs/Int64
+  max_freq: 10
+  srcIP: robotc
+  srcPort: 3044
+
 ## 笔记本传来的消息
 ## 1.启动指令///
 ## 2.规划好的路径//##发c小车需要走的规划路径给a小车

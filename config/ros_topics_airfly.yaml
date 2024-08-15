@@ -12,17 +12,18 @@ IP:
 
 send_topics:
 # 无人机消息
-- topic_name: /camera/color/image_raw/compressed
-  msg_type: sensor_msgs/CompressedImage
-  max_freq: 50 
-  srcIP: airfly 
-  srcPort: 3014 
 # 历史视觉点云话题(地图)
 - topic_name: /rtabmap/mapData
   msg_type: swarm_ros_bridge/MapData
   max_freq: 50
   srcIP: airfly 
   srcPort: 3013 
+# 实时图像话题
+- topic_name: /camera/color/image_raw/compressed
+  msg_type: sensor_msgs/CompressedImage
+  max_freq: 50 
+  srcIP: airfly 
+  srcPort: 3014 
 
 ## 笔记本传来的消息
 ## 1.启动指令//

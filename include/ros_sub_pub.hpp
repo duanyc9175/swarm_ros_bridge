@@ -24,9 +24,9 @@
 #include <ros/ros.h>
 
 // 判断是否稳定连接
-// #include <std_msgs/Bool.h>
-// #define MSG_TYPE1 "std_msgs/Bool"
-// #define MSG_CLASS1 std_msgs::Bool
+#include <std_msgs/Int64.h>
+#define MSG_TYPE1 "std_msgs/Int64"
+#define MSG_CLASS1 std_msgs::Int64
 // *******小车
 // 位置信息
 #include <geometry_msgs/PoseStamped.h>

@@ -8,7 +8,7 @@
 ### list all <IPname: IP> here (IPname can be set arbitrarily) ###
 IP:
   self: '*'   # '*' stands for all self IPs
-  airfly: 192.168.31.231
+  airfly: 100.104.128.117
 
 send_topics:
 # 无人机消息

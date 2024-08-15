@@ -88,3 +88,10 @@ add_dependencies(start_pc ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_
 target_link_libraries(start_pc
    ${catkin_LIBRARIES}
 )
+
+add_executable(start_airfly src/start_airfly.cpp)
+add_dependencies(start_airfly ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+target_link_libraries(start_airfly
+   ${catkin_LIBRARIES}
+)

@@ -87,6 +87,11 @@ recv_topics:
   srcIP: robotc
   srcPort: 3044
 
+- topic_name: /airfly_is_connected
+  msg_type: std_msgs/Int64
+  srcIP: airfly
+  srcPort: 3015
+
 #a车发的消息 
 - topic_name: /a/ndt_pose
   msg_type: geometry_msgs/PoseStamped

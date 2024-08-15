@@ -25,6 +25,11 @@ send_topics:
   srcIP: airfly 
   srcPort: 3014 
 
+- topic_name: /is_connected
+  msg_type: std_msgs/Int64
+  max_freq: 50
+  srcIP: airfly
+  srcPort: 3015
 ## 笔记本传来的消息
 ## 1.启动指令//
 # recv_topics:

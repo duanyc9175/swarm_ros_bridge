@@ -8,9 +8,9 @@
 ### list all <IPname: IP> here (IPname can be set arbitrarily) ###
 IP:
   self: '*'   # '*' stands for all self IPs
-  robota: 192.168.57.112
-  robotb: 192.168.57.117
-  robotc: 192.168.57.121
+  robota: 192.168.57.211
+  robotb: 192.168.57.212
+  robotc: 192.168.57.213
   airfly: 100.104.128.117
   PC2: 192.168.57.1
   # PC3: 127.0.0.1
